@@ -1,4 +1,4 @@
-/* 
+package examples;/*
  *
  * Make sure to see the more detailed description of
  * StdDraw at: http://introcs.cs.princeton.edu/java/15inout/ 
@@ -9,8 +9,12 @@
  *   http://introcs.cs.princeton.edu/java/15inout/javadoc/StdDraw.html
  */
 
+
+import edu.princeton.cs.introcs.StdDraw;
+import edu.princeton.cs.introcs.StdRandom;
+
 public class StdDrawDemo {
-	public static String imageToDraw = "advice.png";
+	public static String imageToDraw = "E:/cs61b/proj0/examples/advice.png";
 
 	/* Draws three copies of the image in a rectangular pattern. */
 	public static void drawThree() {
@@ -95,7 +99,6 @@ public class StdDrawDemo {
 	}
 
 	public static void main(String[] args) {
-		
 		drawThree();
 		drawRandom();
 		drawZoom();
