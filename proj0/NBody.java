@@ -22,7 +22,7 @@ public class NBody {
         return planets;
     }
 
-    public static String imageToDraw = "E:/cs61b/proj0/images/starfield.jpg";
+    private static String imageToDraw = "E:/cs61b/proj0/images/starfield.jpg";
 
     public static void main(String[] args){
         double T = Double.parseDouble(args[0]);

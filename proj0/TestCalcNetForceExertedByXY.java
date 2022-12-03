@@ -42,45 +42,16 @@ public class TestCalcNetForceExertedByXY {
     /**
      *  Checks the Planet class to make sure calcNetForceExertedByXY works.
      */
-//    private static void calcNetForceExertedByXY() {
-//        System.out.println("Checking calcNetForceExertedByXY...");
-//
-//        Planet p1 = new Planet(1.0, 1.0, 3.0, 4.0, 5.0, "jupiter.gif");
-//        Planet p2 = new Planet(2.0, 1.0, 3.0, 4.0, 4e11, "jupiter.gif");
-//
-//        Planet p3 = new Planet(4.0, 5.0, 3.0, 4.0, 5.0, "jupiter.gif");
-//        Planet p4 = new Planet(3.0, 2.0, 3.0, 4.0, 5.0, "jupiter.gif");
-//
-//        Planet[] planets = {p2, p3, p4};
-//
-//        double xNetForce = p1.calcNetForceExertedByX(planets);
-//        double yNetForce = p1.calcNetForceExertedByY(planets);
-//
-//        checkEquals(133.4, round(xNetForce, 2), "calcNetForceExertedByX()");
-//        checkEquals(0.0, round(yNetForce, 2), "calcNetForceExertedByY()");
-//
-//        System.out.println("Running test again, but with array that contains the target planet.");
-//
-//        planets = new Planet[]{p1, p2, p3, p4};
-//
-//        xNetForce = p1.calcNetForceExertedByX(planets);
-//        yNetForce = p1.calcNetForceExertedByY(planets);
-//
-//        checkEquals(133.4, round(xNetForce, 2), "calcNetForceExertedByX()");
-//        checkEquals(0.0, round(yNetForce, 2), "calcNetForceExertedByY()");
-//
-//    }
-
-        private static void calcNetForceExertedByXY() {
+    private static void calcNetForceExertedByXY() {
         System.out.println("Checking calcNetForceExertedByXY...");
 
-        Body p1 = new Body(1.0, 1.0, 3.0, 4.0, 5.0, "jupiter.gif");
-        Body p2 = new Body(2.0, 1.0, 3.0, 4.0, 4e11, "jupiter.gif");
+        Planet p1 = new Planet(1.0, 1.0, 3.0, 4.0, 5.0, "jupiter.gif");
+        Planet p2 = new Planet(2.0, 1.0, 3.0, 4.0, 4e11, "jupiter.gif");
 
-        Body p3 = new Body(4.0, 5.0, 3.0, 4.0, 5.0, "jupiter.gif");
-        Body p4 = new Body(3.0, 2.0, 3.0, 4.0, 5.0, "jupiter.gif");
+        Planet p3 = new Planet(4.0, 5.0, 3.0, 4.0, 5.0, "jupiter.gif");
+        Planet p4 = new Planet(3.0, 2.0, 3.0, 4.0, 5.0, "jupiter.gif");
 
-        Body[] planets = {p2, p3, p4};
+        Planet[] planets = {p2, p3, p4};
 
         double xNetForce = p1.calcNetForceExertedByX(planets);
         double yNetForce = p1.calcNetForceExertedByY(planets);
@@ -90,7 +61,7 @@ public class TestCalcNetForceExertedByXY {
 
         System.out.println("Running test again, but with array that contains the target planet.");
 
-        planets = new Body[]{p1, p2, p3, p4};
+        planets = new Planet[]{p1, p2, p3, p4};
 
         xNetForce = p1.calcNetForceExertedByX(planets);
         yNetForce = p1.calcNetForceExertedByY(planets);
@@ -99,5 +70,7 @@ public class TestCalcNetForceExertedByXY {
         checkEquals(0.0, round(yNetForce, 2), "calcNetForceExertedByY()");
 
     }
+
+
 
 }
