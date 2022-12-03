@@ -7,16 +7,16 @@ public class NBody {
         return R;
     }
 
-    public static Body[] readBodies(String filename){
+    public static Planet[] readPlanets(String filename){
         In in = new In(filename);
         int N = in.readInt();
         double R = in.readDouble();
 
-        Body[] planets = new Body[N];
+        Planet[] planets = new Planet[N];
         int i = 0;
 
         while (i < N){
-            planets[i] = new Body(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readString());
+            planets[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readString());
             i++;
         }
         return planets;
@@ -29,7 +29,7 @@ public class NBody {
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         double R = readRadius(filename);
-        Body[] planets = readBodies(filename);
+        Planet[] planets = readPlanets(filename);
         int N = planets.length;
 
         StdDraw.setScale(-R, R);

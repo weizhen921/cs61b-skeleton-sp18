@@ -1,8 +1,8 @@
-public class Body {
+public class Planet {
 
     private static final double g=6.67E-11;
 
-    /** creating a basic version of the Body class with the following 6 instance variables:
+    /** creating a basic version of the Planet class with the following 6 instance variables:
      * they must be explicitly set to public via the public keyword. */
     public double xxPos;
     public double yyPos;
@@ -10,8 +10,8 @@ public class Body {
     public double yyVel;
     public double mass;
     public String imgFileName;
-    /** add in two Body constructors that can initialize an instance of the Body class */
-    public Body(double xP, double yP, double xV, double yV, double m, String img){
+    /** add in two Planet constructors that can initialize an instance of the Planet class */
+    public Planet(double xP, double yP, double xV, double yV, double m, String img){
         xxPos = xP;
         yyPos = yP;
         xxVel = xV;
@@ -20,7 +20,7 @@ public class Body {
         imgFileName = img;
     }
 
-    public Body(Body b){
+    public Planet(Planet b){
         this.xxPos = b.xxPos;
         this.yyPos = b.yyPos;
         this.xxVel = b.xxVel;
@@ -29,36 +29,36 @@ public class Body {
         this.imgFileName = b.imgFileName;
     }
 
-    // adding a method called calcDistance that calculates the distance between two Bodys
-    // take in a single Body and should return a double equal to the distance between the supplied body and the body that is doing the calculation
-    public double calcDistance(Body b){
+    // adding a method called calcDistance that calculates the distance between two Planets
+    // take in a single Planet and should return a double equal to the distance between the supplied Planet and the Planet that is doing the calculation
+    public double calcDistance(Planet b){
         double dx = b.xxPos - this.xxPos;
         double dy = b.yyPos - this.yyPos;
         double r = Math.sqrt(dx * dx + dy * dy);
         return r;
     }
 
-    public double calcForceExertedBy(Body b){
+    public double calcForceExertedBy(Planet b){
         double r = calcDistance(b);
         double f = (g * this.mass * b.mass) / (r * r);
         return f;
     }
 
-    public double calcForceExertedByX(Body b){
+    public double calcForceExertedByX(Planet b){
         double r = calcDistance(b);
         double f = calcForceExertedBy(b);
         double fx = f * (b.xxPos - this.xxPos) / r;
         return fx;
     }
 
-    public double calcForceExertedByY(Body b){
+    public double calcForceExertedByY(Planet b){
         double r = calcDistance(b);
         double f = calcForceExertedBy(b);
         double fy = f * (b.yyPos - this.yyPos) / r;
         return fy;
     }
 
-    public double calcNetForceExertedByX(Body[] b){
+    public double calcNetForceExertedByX(Planet[] b){
         double nfx = 0.0;
 
         for(int i = 0; i< b.length; i++){
@@ -70,7 +70,7 @@ public class Body {
         return nfx;
     }
 
-    public double calcNetForceExertedByY(Body[] b){
+    public double calcNetForceExertedByY(Planet[] b){
         double nfx = 0.0;
 
         for(int i = 0; i< b.length; i++){
