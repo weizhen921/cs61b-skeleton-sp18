@@ -16,7 +16,7 @@ public class LinkedListDeque<T> {
     /**
      * Stuff Node class
      */
-    public class Node{
+    private class Node{
         public Node prev;
         public T item;
         public Node next;
@@ -48,11 +48,11 @@ public class LinkedListDeque<T> {
 
     public void printDeque(){
         Node pointer = sentinel.next;
-        for (int i=size; i>0; size--){
+        for(int i=size; i>1; size--){
             System.out.print(pointer.item + " ");
             pointer = pointer.next;
         }
-        System.out.println();
+        System.out.println(pointer.item);
     }
 
     public T removeFirst(){
@@ -67,7 +67,7 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast(){
-        if (sentinel.prev == sentinel){
+        if(sentinel.prev == sentinel){
             return null;
         }
         Node last = sentinel.prev;
@@ -80,18 +80,18 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index){
-        if (index >= size){
+        if(index >= size){
             return null;
         }
         Node pointer = sentinel.next;
-        for (int i = 0; i < index; i++){
+        for(int i = 0; i < index; i++){
             pointer = pointer.next;
         }
         return pointer.item;
     }
 
     public T getRecursive(int index){
-        if (index >= size){
+        if(index >= size){
             return null;
         }
         int count = 0;
@@ -106,17 +106,17 @@ public class LinkedListDeque<T> {
         return getRecursiveHelper(index, count+1, pointer.next);
     }
 
-    public LinkedListDeque(LinkedListDeque other){
-        sentinel = new Node(null,null,null);
-        sentinel.prev = sentinel;
-        sentinel.next = sentinel;
-        size = 0;
-
-        for(int i = 0; i< other.size(); i++){
-            this.addLast((T) other.get(i));
-        }
-
-    }
+//    public LinkedListDeque(LinkedListDeque other){
+//        sentinel = new Node(null,null,null);
+//        sentinel.prev = sentinel;
+//        sentinel.next = sentinel;
+//        size = 0;
+//
+//        for(int i = 0; i< other.size(); i++){
+//            this.addLast((T) other.get(i));
+//        }
+//
+//    }
 
 
 }
