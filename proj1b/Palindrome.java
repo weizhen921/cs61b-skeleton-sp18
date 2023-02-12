@@ -29,14 +29,13 @@ public class Palindrome {
             return true;
         }
         if (d.removeFirst() == d.removeLast()) {
-            return isPalindrome(DequeToString(d));
-        }
-        else {
+            return isPalindrome(dequetoString(d));
+        } else {
             return false;
         }
     }
 
-    private String DequeToString(Deque d) {
+    private String dequetoString(Deque d) {
         String s = new String();
         s = "";
         while (d.size() > 0) {
@@ -50,8 +49,8 @@ public class Palindrome {
         if (d.size() == 0 || d.size() == 1) {
             return true;
         }
-        if (cc.equalChars(d.removeFirst(), d.removeLast())){
-            return isPalindrome(DequeToString(d), cc);
+        if (cc.equalChars(d.removeFirst(), d.removeLast())) {
+            return isPalindrome(dequetoString(d), cc);
         } else {
             return false;
         }
