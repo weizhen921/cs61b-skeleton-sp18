@@ -25,16 +25,14 @@ public class TestArrayDequeGold {
                 if (s.size() != 0 && a.size() != 0) {
                     Integer sn = s.removeFirst();
                     Integer an = a.removeFirst();
-                    expression = expression + "removeFirst(): " + sn
-                            + "\nremoveFirst(): " + an + "\n";
+                    expression = expression + "removeFirst()\n";
                     assertEquals(expression, sn, an);
                 }
             } else if (numberBetweenZeroAndOne > 0.75) {
                 if (s.size() != 0 && a.size() != 0) {
                     Integer sn = s.removeLast();
                     Integer an = a.removeLast();
-                    expression = expression + "removeLast(): "
-                            + sn + "\nremoveLast(): " + an + "\n";
+                    expression = expression + "removeLast()\n";
                     assertEquals(expression, sn, an);
                 }
             }
