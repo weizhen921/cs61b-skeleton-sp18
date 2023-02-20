@@ -7,7 +7,7 @@ public class GuitarString {
      * the values cannot be changed at runtime. We'll discuss this and other topics
      * in lecture on Friday. */
     private static final int SR = 44100;      // Sampling Rate
-    private static final double DECAY = .996; // energy decay factor
+    private static final double DECAY = 0.996; // energy decay factor
 
     /* Buffer for storing sound data. */
     private BoundedQueue<Double> buffer;
@@ -40,7 +40,11 @@ public class GuitarString {
 
         }
         while (!buffer.isFull()) {
-            double r = Math.random() - 0.5;
+            double r = Math.random() - 0.5; //guitar
+            //double r = Math.signum(Math.random() - 0.5) * -1.0f; //harp
+//            double r = 0.0;
+
+
             buffer.enqueue(r);
 
         }
@@ -54,7 +58,18 @@ public class GuitarString {
         //       the average of the two multiplied by the DECAY factor.
         //       Do not call StdAudio.play().
         Double firstSample = buffer.dequeue();
-        buffer.enqueue(DECAY * (firstSample + sample()) / 2);
+        Double audio = (firstSample + sample()) / 2;
+        /** for guitar */
+        //buffer.enqueue(DECAY * audio);
+        /** for harper */
+//        audio = Math.signum(audio) * -1.0f;
+//        buffer.enqueue(DECAY * audio);
+        /** for drums */
+        double probability = Math.random();
+        if (probability >=0.5) {
+            audio = Math.signum(audio) * -1.0f; //drum
+        }
+        buffer.enqueue(1.0 * audio);
 
     }
 
