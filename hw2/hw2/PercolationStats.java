@@ -12,8 +12,6 @@ public class PercolationStats {
         }
         this.T = T;
         this.threshold = new double[T];
-
-
         for (int i = 0; i < T; i++) {
             Percolation p = pf.make(N);
             while (!p.percolates()) {
@@ -37,7 +35,6 @@ public class PercolationStats {
     public double confidenceHigh() {
         return mean() + 1.96 * stddev() / Math.sqrt(T);
     }                                 // high endpoint of 95% confidence interval
-
 
 
 }

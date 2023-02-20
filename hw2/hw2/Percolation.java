@@ -37,8 +37,10 @@ public class Percolation {
         }
         if (isOpen(row, col)) {
             return;
+        } else {
+            sites[row][col] = true;
+            count += 1;
         }
-        sites[row][col] = true;
 
         if (row == 0) {
             uf.union(xyTo1D(row, col), top);
@@ -64,9 +66,6 @@ public class Percolation {
             uf.union(xyTo1D(row, col), xyTo1D(row - 1, col));
             noBackWash.union(xyTo1D(row, col), xyTo1D(row - 1, col));
         }
-
-
-        count += 1;
     }       // open the sites (row, col) if it is not open already
 
     public boolean isOpen(int row, int col) {
