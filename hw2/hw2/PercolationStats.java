@@ -2,7 +2,6 @@ package hw2;
 import edu.princeton.cs.introcs.StdRandom;
 import edu.princeton.cs.introcs.StdStats;
 
-import java.util.Random;
 
 public class PercolationStats {
     private double[] threshold;
@@ -11,15 +10,16 @@ public class PercolationStats {
         if (N <= 0 || T <= 0) {
             throw new java.lang.IllegalArgumentException();
         }
-        this.threshold = new double[T];
         this.T = T;
+        this.threshold = new double[T];
+
 
         for (int i = 0; i < T; i++) {
             Percolation p = pf.make(N);
-            int randomRow = StdRandom.uniform(N);
-            int randomCol = StdRandom.uniform(N);
             while (!p.percolates()) {
-                p.open(randomRow,randomCol);
+                int randomRow = StdRandom.uniform(N);
+                int randomCol = StdRandom.uniform(N);
+                p.open(randomRow, randomCol);
             }
             threshold[i] = (double) p.numberOfOpenSites() / N * N;
         }
@@ -37,5 +37,7 @@ public class PercolationStats {
     public double confidenceHigh() {
         return mean() + 1.96 * stddev() / Math.sqrt(T);
     }                                 // high endpoint of 95% confidence interval
+
+
 
 }

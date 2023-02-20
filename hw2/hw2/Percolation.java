@@ -99,5 +99,8 @@ public class Percolation {
         return row * n + col;
     }
 
+    public static void main(String[] args) {
+    }
+
 
 }
