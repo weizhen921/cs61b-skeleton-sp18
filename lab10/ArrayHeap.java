@@ -104,10 +104,14 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
         validateSinkSwimArg(index);
 
-        while (index > 1 && getNode(index).myPriority < getNode(parentIndex(index)).myPriority) {
-            swap(index, parentIndex(index));
-            index = index / 2;
+        if (index == 1) {
+            return;
         }
+        if (min(index, parentIndex(index)) == parentIndex(index)) {
+            return;
+        }
+        swap(index, parentIndex(index));
+        swim(parentIndex(index));
         return;
     }
 
@@ -117,16 +121,19 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
     private void sink(int index) {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
         validateSinkSwimArg(index);
-
-
-        while (leftIndex(index) <= size) {
-            int tobeSwap = min(leftIndex(index), rightIndex(index));
-            if (min(index, tobeSwap) == index) {
-                break;
+        int tobeSwap = index;
+        if (leftIndex(index) <= size) {
+            tobeSwap = leftIndex(index);
+            if (leftIndex(index) < size) {
+                tobeSwap = min(leftIndex(index), rightIndex(index));
             }
-            swap(index, tobeSwap);
-            index = tobeSwap;
         }
+        if (min(index, tobeSwap) == index) {
+            return;
+        }
+
+        swap(index, tobeSwap);
+        sink(tobeSwap);
         return;
     }
 
@@ -195,15 +202,19 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     @Override
     public void changePriority(T item, double priority) {
+        if (size == 0) {
+            return;
+        }
         for (int i = 1; i <= size; i += 1) {
-            if (getNode(i).myItem.equals(item)) {
+            if (contents[i].item().equals(item)) {
+                double temp = contents[i].myPriority;
                 getNode(i).myPriority = priority;
-            }
-            if (priority < getNode(parentIndex(i)).myPriority) {
-                swim(i);
-            } else if (priority > getNode(leftIndex(i)).myPriority
-                    || priority > getNode(rightIndex(i)).myPriority) {
-                sink(i);
+                if (priority < temp) {
+                    swim(i);
+                } else if (priority > temp) {
+                    sink(i);
+                }
+                break;
             }
         }
         return;
